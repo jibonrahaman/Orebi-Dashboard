@@ -7,6 +7,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Login from "../pages/Login";
+import Error from "../pages/Error";
 
 
 function App() {
@@ -19,7 +20,10 @@ function App() {
             
       </Route>
           <Route path="/login"
-          element = {<Login/>} /> 
+          element = {<Login/>} />
+         
+          <Route path="*"
+          element = {<Error/>} /> 
     </Route>
     )
   );
