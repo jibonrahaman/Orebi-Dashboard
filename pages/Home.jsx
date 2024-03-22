@@ -1,5 +1,6 @@
-import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
+import { AppstoreOutlined} from '@ant-design/icons';
 import { Menu } from 'antd';
+import { useNavigate } from 'react-router-dom';
 function getItem(label, key, icon, children, type) {
   return {
     key,
@@ -11,7 +12,7 @@ function getItem(label, key, icon, children, type) {
 }
 const items = [
   getItem('Users', 'sub1', <AppstoreOutlined />, [
-    getItem('Merchant', '1'),
+    getItem('Merchant', '/login'),
     getItem('Users', '2'),
      ]),
   {
@@ -24,16 +25,16 @@ const items = [
   {
     type: 'divider',
   },
-    getItem('Category', 'sub2', <AppstoreOutlined />, [
+    getItem('Category', 'sub3', <AppstoreOutlined />, [
     getItem('Add Category', '5'),
     getItem('All Category', '6'),
      ]),
   {
     type: 'divider',
   },
-    getItem('SubCategory', 'sub2', <AppstoreOutlined />, [
-    getItem('Add SubCategory', '5'),
-    getItem('All SubCategory', '6'),
+    getItem('SubCategory', 'sub4', <AppstoreOutlined />, [
+    getItem('Add SubCategory', '7'),
+    getItem('All SubCategory', '8'),
      ]),
   {
     type: 'divider',
@@ -41,7 +42,9 @@ const items = [
  
 ];
 export default function Home() {
-    const onClick = (e) => {
+  const navigate = useNavigate();
+    const onClick = (e) => { 
+        navigate(e.key)    
         console.log('click ', e);
       };
   return (

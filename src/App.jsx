@@ -1,3 +1,4 @@
+
 import Home from "../pages/Home"
 import {
   createRoutesFromElements,
@@ -5,16 +6,21 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import Login from "../pages/Login";
 
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route
+    <Route>
+        <Route
         path="/"
-        element={<Home/>}
-      >       
+        element={<Home/>}>
+            
       </Route>
+          <Route path="/login"
+          element = {<Login/>} /> 
+    </Route>
     )
   );
   return (
