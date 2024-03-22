@@ -10,7 +10,7 @@ function getItem(label, key, icon, children, type) {
   };
 }
 const items = [
-  getItem('Users', 'sub2', <AppstoreOutlined />, [
+  getItem('Users', 'sub1', <AppstoreOutlined />, [
     getItem('Merchant', '1'),
     getItem('Users', '2'),
      ]),
@@ -24,9 +24,16 @@ const items = [
   {
     type: 'divider',
   },
-    getItem('Navigation Two', 'sub2', <AppstoreOutlined />, [
-    getItem('Option 5', '5'),
-    getItem('Option 6', '6'),
+    getItem('Category', 'sub2', <AppstoreOutlined />, [
+    getItem('Add Category', '5'),
+    getItem('All Category', '6'),
+     ]),
+  {
+    type: 'divider',
+  },
+    getItem('SubCategory', 'sub2', <AppstoreOutlined />, [
+    getItem('Add SubCategory', '5'),
+    getItem('All SubCategory', '6'),
      ]),
   {
     type: 'divider',
@@ -44,8 +51,7 @@ export default function Home() {
       width: 256,
     }}
     defaultSelectedKeys={['1']}
-    
-    mode="inline"
+     mode="inline"
     items={items}
   />
   )
