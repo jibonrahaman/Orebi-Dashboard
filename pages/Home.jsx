@@ -1,6 +1,6 @@
 import { AppstoreOutlined} from '@ant-design/icons';
-import { Menu } from 'antd';
-import { useNavigate } from 'react-router-dom';
+import { Menu, Row, Col,   } from 'antd';
+import { Outlet, useNavigate } from 'react-router-dom';
 function getItem(label, key, icon, children, type) {
   return {
     key,
@@ -48,6 +48,9 @@ export default function Home() {
         console.log('click ', e);
       };
   return (
+ <>
+    <Row>
+    <Col span={6} >
     <Menu
     onClick={onClick}
     style={{
@@ -57,5 +60,13 @@ export default function Home() {
      mode="inline"
     items={items}
   />
+  </Col>
+
+    <Col span={18}>
+     <Outlet/>
+    </Col>
+  </Row>
+  </>
+    
   )
 }
