@@ -1,4 +1,5 @@
 import { Space, Table,Button, Tag } from 'antd';
+import { useEffect } from 'react';
 
 const columns = [
   {
@@ -56,6 +57,11 @@ const data = [
   },
 ];
 export default function AllProduct() {
+
+ useEffect(()=>{
+   
+ },[])
+
   return (
     <div>
       <Table columns={columns} dataSource={data} />;
