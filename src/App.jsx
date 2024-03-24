@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Login from "../pages/Login";
 import Error from "../pages/Error";
+import AddProduct from "../pages/AddProduct";
 
 
 function App() {
@@ -18,7 +19,9 @@ function App() {
         path="/"
         element={<Home/>}>
              <Route path="/login"
-          element = {<Login/>} /> 
+          element = {<Login/>} />
+           <Route path="/addproduct"
+          element = {<AddProduct/>} /> 
       </Route>
         
          

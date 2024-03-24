@@ -19,7 +19,7 @@ const items = [
     type: 'divider',
   },
   getItem('Product', 'sub2', <ProductOutlined />, [
-    getItem('Add Product', '3'),
+    getItem('Add Product', '/addproduct'),
     getItem('All Product', '4'),
      ]),
   {
@@ -62,7 +62,7 @@ export default function Home() {
   />
   </Col>
 
-    <Col span={18}>
+    <Col span={16}>
      <Outlet/>
     </Col>
   </Row>
