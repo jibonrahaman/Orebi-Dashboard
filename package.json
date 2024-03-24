@@ -12,6 +12,7 @@
   "dependencies": {
     "@ant-design/icons": "^5.3.5",
     "antd": "^5.15.3",
+    "axios": "^1.6.8",
     "draft-html": "^1.0.1-test2",
     "draft-js": "^0.11.7",
     "draftjs-to-html": "^0.9.1",

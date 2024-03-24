@@ -1,6 +1,6 @@
 import { Space, Table,Button, Tag } from 'antd';
-import { useEffect } from 'react';
-
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 const columns = [
   {
     title: 'Product Name',
@@ -57,14 +57,22 @@ const data = [
   },
 ];
 export default function AllProduct() {
-
+const [productData,setProductData] = useState([]);
  useEffect(()=>{
-   
+   const fetchData = async ()=>{
+    try {
+    const response = await axios.get("http://localhost:7000/api/v1/allget/getproduct")
+    setProductData(response.data)
+    } catch (error) {
+      console.log("Error Fethcing Product Data",error);
+    }
+   }
+   fetchData()
  },[])
 
   return (
     <div>
-      <Table columns={columns} dataSource={data} />;
+      <Table columns={columns} dataSource={productData} />;
     </div>
   )
 }
