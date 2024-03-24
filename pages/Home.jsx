@@ -20,7 +20,7 @@ const items = [
   },
   getItem('Product', 'sub2', <ProductOutlined />, [
     getItem('Add Product', '/addproduct'),
-    getItem('All Product', '4'),
+    getItem('All Product', '/allproduct'),
      ]),
   {
     type: 'divider',

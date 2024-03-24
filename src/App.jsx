@@ -9,6 +9,7 @@ import {
 import Login from "../pages/Login";
 import Error from "../pages/Error";
 import AddProduct from "../pages/AddProduct";
+import AllProduct from "../pages/AllProduct";
 
 
 function App() {
@@ -21,7 +22,9 @@ function App() {
              <Route path="/login"
           element = {<Login/>} />
            <Route path="/addproduct"
-          element = {<AddProduct/>} /> 
+          element = {<AddProduct/>} />
+            <Route path="/allproduct"
+          element = {<AllProduct/>} /> 
       </Route>
         
          
