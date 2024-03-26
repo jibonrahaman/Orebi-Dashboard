@@ -2,12 +2,14 @@ import { Space, Table,Button, Tag } from 'antd';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 const columns = [
+  
   {
     title: 'Product Name',
     dataIndex: 'name',
     key: 'name',
-    render: (text) => <a>{text}</a>,
+    render: (_,record) =><p>{record.name}</p>,
   },
+ 
   {
     title: 'Image',
     dataIndex: 'image',
@@ -18,8 +20,9 @@ const columns = [
   },
   {
     title: 'Store Name',
-    dataIndex: 'store',
-    key: 'store',
+    dataIndex: 'Store',
+    key: 'Store',
+    render:(_,record) => <p>{record.Store?.storeName}</p>,
   },
  
   {
@@ -69,10 +72,11 @@ const [productData,setProductData] = useState([]);
    }
    fetchData()
  },[])
+ console.log(productData);
 
   return (
     <div>
-      <Table columns={columns} dataSource={productData} />;
+      <Table columns={columns} dataSource={productData} />
     </div>
   )
 }
