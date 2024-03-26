@@ -2,7 +2,12 @@ import { Space, Table,Button, Tag } from 'antd';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 const columns = [
-  
+  {
+    title: 'Serial Number',
+     dataIndex: 'index',
+     key: 'index',
+     render: (_,record,index) =>{return index+1},
+   },
   {
     title: 'Product Name',
     dataIndex: 'name',
