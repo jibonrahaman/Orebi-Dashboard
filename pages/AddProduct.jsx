@@ -2,8 +2,10 @@ import Input from "antd/es/input/Input";
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorState } from 'draft-js';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Select, Tag } from 'antd';
+import axios from "axios";
+
 const options = [
     {
         value: 'gold',
@@ -40,13 +42,32 @@ const tagRender = (props) => {
 };
 
 export default function AddProduct() {
-
-
+    const [addstore , setaddstore] = useState([])
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
     const onEditorStateChange = (editorState) => {
         setEditorState(editorState);
     };
 
+    useEffect (() => {
+        const fetchStore = async () => {
+          try {
+            const arr = []
+            const response = await axios.get("http://localhost:7000/api/v1/allget/getstore");
+            // response.data &&
+            response.data.map((item)=>{
+                arr.push({
+                    value: item._id,
+                    label: item.storeName
+                })
+            })
+            setaddstore(arr);
+          } catch (error) {
+            console.log("Error Fethcing Store Data", error);
+          }
+        }
+        fetchStore()
+      }, [addstore])
+ console.log(addstore);
     return (
 
 
@@ -73,7 +94,7 @@ export default function AddProduct() {
                     style={{
                         width: '100%',
                     }}
-                    options={options}
+                    options={addstore}
                 />
             </div>
 
