@@ -3,7 +3,7 @@ import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorState } from 'draft-js';
 import { useEffect, useState } from "react";
-import { Select, Tag } from 'antd';
+import { Button, Select, Tag } from 'antd';
 import axios from "axios";
 
 const options = [
@@ -48,32 +48,34 @@ export default function AddProduct() {
         setEditorState(editorState);
     };
 
-    useEffect (() => {
+    useEffect(() => {
         const fetchStore = async () => {
-          try {
-            const arr = []
-            const response = await axios.get("http://localhost:7000/api/v1/allget/getstore");
-            // response.data &&
-            response.data.map((item)=>{
-                arr.push({
-                    value: item._id,
-                    label: item.storeName
-                })
-            })
-            setaddstore(arr);
-          } catch (error) {
-            console.log("Error Fethcing Store Data", error);
-          }
-        }
-        fetchStore()
-      }, [addstore])
- console.log(addstore);
+            try {
+                const arr = [];
+                const response = await axios.get("http://localhost:7000/api/v1/allget/getstore");
+                response.data.map((item) => {
+                    arr.push({
+                        value: item._id,
+                        label: item.storeName
+                    });
+                });
+                setaddstore(arr);
+            } catch (error) {
+                console.log("Error Fetching Store Data", error);
+            }
+        };
+        fetchStore();
+    }, [addstore]);
+     const [productName,setproductName] = useState(" ");
+     const [StoreName,setStoreName] = useState("");
+    const hanldeUploadProduct = ()=>{
+         console.log(productName);
+         console.log(StoreName);
+    }
     return (
-
-
         <div>
             <h2>Product Name :</h2>
-            <Input placeholder="Product Name" />
+            <Input onChange={(e)=>setproductName(e.target.value)} placeholder="Product Name" />
 
             {/* Product Description */}
             <div>
@@ -87,8 +89,9 @@ export default function AddProduct() {
             </div>
 
             <div>
-                <h2>Proudt StoreName :</h2>
+                <h2>Product StoreName :</h2>
                 <Select
+                 onChange={(e)=>setStoreName(e)}
                     mode="single"
                     tagRender={tagRender}
                     style={{
@@ -97,7 +100,7 @@ export default function AddProduct() {
                     options={addstore}
                 />
             </div>
-
+         <Button onClick={hanldeUploadProduct} style={{marginTop:20}} type="primary">Product Upload</Button>
         </div>
     )
 }
