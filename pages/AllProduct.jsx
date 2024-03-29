@@ -1,6 +1,18 @@
-import { Space, Table,Button, Tag } from 'antd';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { Space, Table,Button} from 'antd';
+import axios from 'axios'; // Make sure to import axios
+import { useEffect , useState} from 'react';
+
+const handleDelete = async (id) => {
+      try {
+      await axios.post(`http://localhost:7000/api/v1/alldelete/productDelete/`,{
+       id:id
+      })           
+      } catch (error) {
+        console.error('Error occurred while deleting product:', error);
+      }
+    };
+
+
 const columns = [
   {
     title: 'Serial Number',
@@ -34,9 +46,9 @@ const columns = [
     title: 'Action',
     key: 'action',
     render: (_, record) => (
-      <Space size="middle">
+            <Space size="middle">
        <Button type="primary" >Edit</Button>
-       <Button type="primary" danger>Delete</Button>
+       <Button onClick={()=>handleDelete(record._id)} type="primary" danger>Delete </Button>
       </Space>
     ),
   },
@@ -65,6 +77,7 @@ const data = [
   },
 ];
 export default function AllProduct() {
+
 const [productData,setProductData] = useState([]);
  useEffect(()=>{
    const fetchData = async ()=>{
@@ -76,8 +89,9 @@ const [productData,setProductData] = useState([]);
     }
    }
    fetchData()
- },[])
- console.log(productData);
+ },[productData])
+
+
 
   return (
     <div>
