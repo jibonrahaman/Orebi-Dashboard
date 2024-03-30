@@ -2,16 +2,58 @@
 import { Button, Space, Table, Tag } from 'antd';
 const columns = [
   {
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
+    title: 'Serial',
+    dataIndex: 'number',
+    key: 'number',
+    render:(_id,record,index) =>{return (index+1)}
    
   },
 
   {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
+    title: 'Product Name',
+    dataIndex: 'name',
+    key: 'name',
+    render: (text) => <p style={{color:'blue', fontWeight: 'bold'}}>{text}</p>,
+  },
+   {
+    title: 'Color',
+    dataIndex: 'color',
+    key: 'color',
+  },
+  {
+    title: 'Ram',
+    dataIndex: 'ram',
+    key: 'ram',
+  },
+ 
+  {
+    title: 'Storage',
+    dataIndex: 'storage',
+    key: 'storage',
+  },
+ 
+  {
+    title: 'Size',
+    dataIndex: 'size',
+    key: 'size',
+  },
+ 
+  {
+    title: 'Img',
+    dataIndex: 'img',
+    key: 'img',
+  },
+ 
+  {
+    title: 'Price',
+    dataIndex: 'price',
+    key: 'price',
+  },
+ 
+  {
+    title: 'Quantity',
+    dataIndex: 'quantity',
+    key: 'quantity',
   },
  
   {
@@ -33,20 +75,8 @@ const data = [
     address: 'New York No. 1 Lake Park',
     tags: ['nice', 'developer'],
   },
-  {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
-  },
-  {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sydney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
-  },
+ 
+  
 ];
 export default function AllVariant() {
   return (
