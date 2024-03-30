@@ -1,10 +1,11 @@
 import Input from "antd/es/input/Input";
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import { EditorState } from 'draft-js';
+import { EditorState, convertToRaw } from 'draft-js';
 import { useEffect, useState } from "react";
 import { Button, Select, Tag } from 'antd';
 import axios from "axios";
+import draftToHtml from 'draftjs-to-html';
 
 const options = [
     {
@@ -71,6 +72,7 @@ export default function AddProduct() {
     const hanldeUploadProduct = ()=>{
          console.log(productName);
          console.log(StoreName);
+         console.log(draftToHtml(convertToRaw(editorState.getCurrentContent())))
     }
     return (
         <div>
