@@ -69,11 +69,21 @@ export default function AddProduct() {
     }, [addstore]);
      const [productName,setproductName] = useState(" ");
      const [StoreName,setStoreName] = useState("");
-    const hanldeUploadProduct = ()=>{
-         console.log(productName);
-         console.log(StoreName);
-         console.log(draftToHtml(convertToRaw(editorState.getCurrentContent())))
+
+     const hanldeUploadProduct = async () => {
+        try {
+            const createProduct = await axios.post("http://localhost:7000/api/v1/become/createProduct", {
+                name: productName,
+                description: draftToHtml(convertToRaw(editorState.getCurrentContent())),
+                Store: StoreName
+            });
+            console.log(createProduct);
+        } catch (error) {
+            console.error("Error:", error);
+        }
     }
+    
+
     return (
         <div>
             <h2>Product Name :</h2>

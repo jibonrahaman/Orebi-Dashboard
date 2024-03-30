@@ -21,6 +21,7 @@ const items = [
   getItem('Product', 'sub2', <ProductOutlined />, [
     getItem('Add Product', '/addproduct'),
     getItem('All Product', '/allproduct'),
+    getItem('All Variant', '/allvariant'),
      ]),
   {
     type: 'divider',

@@ -10,6 +10,7 @@ import Login from "../pages/Login";
 import Error from "../pages/Error";
 import AddProduct from "../pages/AddProduct";
 import AllProduct from "../pages/AllProduct";
+import AllVariant from "../pages/AllVariant";
 
 
 function App() {
@@ -25,6 +26,9 @@ function App() {
           element = {<AddProduct/>} />
             <Route path="/allproduct"
           element = {<AllProduct/>} /> 
+          <Route
+          path="/allvariant"
+          element = {<AllVariant/>}/>
       </Route>
         
          
