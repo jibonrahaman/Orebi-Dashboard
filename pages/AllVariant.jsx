@@ -1,7 +1,7 @@
 
 import { Button, Space, Table, Tag } from 'antd';
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 const columns = [
   {
     title: 'Serial',
@@ -21,6 +21,7 @@ const columns = [
     title: 'Color',
     dataIndex: 'color',
     key: 'color',
+    render:(_id,record)=> console.log(render); 
   },
   {
     title: 'Ram',
