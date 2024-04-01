@@ -1,5 +1,6 @@
 
 import { Button, Space, Table, Tag } from 'antd';
+import axios from 'axios';
 import { useEffect } from 'react';
 const columns = [
   {
@@ -81,8 +82,10 @@ const data = [
 ];
 export default function AllVariant() {
   useEffect(()=>{
-
-  }, )
+  const fetchVariant = async ()=>{
+    const AllVariant = await axios.get("http://localhost:7000/api/v1/allget/getvariant");
+  }
+  }, [])
   return (
     <>
     <h1 style={{margin: 10}}>All Variants</h1>
