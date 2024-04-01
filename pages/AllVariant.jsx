@@ -8,8 +8,8 @@ const columns = [
     dataIndex: 'number',
     key: 'number',
     render:(_id,record,index) =>{return (index+1)}
+   },
    
-  },
 
   {
     title: 'Product Name',
@@ -96,7 +96,10 @@ export default function AllVariant() {
   return (
     <>
     <h1 style={{margin: 10}}>All Variants</h1>
-    <Table columns={columns} dataSource={variantData} />
+    <Table 
+    bordered  
+      columns={columns} 
+      dataSource={variantData} />
     </>
   )
 }
