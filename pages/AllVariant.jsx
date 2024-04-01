@@ -21,7 +21,6 @@ const columns = [
     title: 'Color',
     dataIndex: 'color',
     key: 'color',
-    render:(_id,record)=> console.log(render); 
   },
   {
     title: 'Ram',
@@ -45,6 +44,9 @@ const columns = [
     title: 'Img',
     dataIndex: 'img',
     key: 'img',
+    render : (_id,record) => (
+      <img style={{ width: 100 }} src={record.img}alt="img" />
+    )
   },
  
   {
@@ -86,7 +88,7 @@ export default function AllVariant() {
 
   useEffect(()=>{
   const fetchVariant = async ()=>{
-    const response = await axios.get("http://localhost:7000/api/v1/allget/getproduct");
+    const response = await axios.get("http://localhost:7000/api/v1/allget/getvariant");
     setVariantData(response.data);
   }
   fetchVariant()
