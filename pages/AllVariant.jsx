@@ -1,5 +1,6 @@
 
 import { Button, Space, Table, Tag } from 'antd';
+import { useEffect } from 'react';
 const columns = [
   {
     title: 'Serial',
@@ -79,6 +80,9 @@ const data = [
   
 ];
 export default function AllVariant() {
+  useEffect(()=>{
+
+  }, )
   return (
     <>
     <h1 style={{margin: 10}}>All Variants</h1>
