@@ -15,7 +15,7 @@ const columns = [
     title: 'Product Name',
     dataIndex: 'name',
     key: 'name',
-    render: (text) => <p style={{color:'blue', fontWeight: 'bold'}}>{text}</p>,
+    render: (_id,record,text) => <p style={{color:'blue', fontWeight: 'bold'}}>{record.productId.name}</p>,
   },
    {
     title: 'Color',
@@ -92,7 +92,7 @@ export default function AllVariant() {
     setVariantData(response.data);
   }
   fetchVariant()
-  }, [])
+  }, [variantData])
   return (
     <>
     <h1 style={{margin: 10}}>All Variants</h1>
