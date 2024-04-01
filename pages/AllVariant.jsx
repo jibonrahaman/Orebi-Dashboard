@@ -81,15 +81,19 @@ const data = [
   
 ];
 export default function AllVariant() {
+  const [variantData, setVariantData] = useState([]);
+
   useEffect(()=>{
   const fetchVariant = async ()=>{
-    const AllVariant = await axios.get("http://localhost:7000/api/v1/allget/getvariant");
+    const response = await axios.get("http://localhost:7000/api/v1/allget/getproduct");
+    setVariantData(response.data);
   }
+  fetchVariant()
   }, [])
   return (
     <>
     <h1 style={{margin: 10}}>All Variants</h1>
-    <Table columns={columns} dataSource={data} />
+    <Table columns={columns} dataSource={variantData} />
     </>
   )
 }
