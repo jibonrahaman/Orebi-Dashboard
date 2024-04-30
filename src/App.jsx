@@ -11,6 +11,7 @@ import Error from "../pages/Error";
 import AddProduct from "../pages/AddProduct";
 import AllProduct from "../pages/AllProduct";
 import AllVariant from "../pages/AllVariant";
+import Registration from "../pages/Registration";
 
 
 function App() {
@@ -34,6 +35,8 @@ function App() {
          
           <Route path="*"
           element = {<Error/>} /> 
+            <Route path="registration"
+          element = {<Registration/>} /> 
     </Route>
     )
   );
