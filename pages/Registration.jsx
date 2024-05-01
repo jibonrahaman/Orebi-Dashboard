@@ -9,13 +9,18 @@ import { Card } from 'antd';
 
 export default function Registration() {
     const [componentDisabled, setComponentDisabled] = useState(true);
+    const handleOnSubmit  = ()=>{
+        console.log("okk");
+    }
     return (
         <>
           <Card
-    title="Card title"
+    title="Registration"
     bordered={false}
     style={{
       width: 450,
+      margin:"auto",
+      marginTop: '20px'
     }}
   >
     <Form
@@ -71,7 +76,7 @@ export default function Registration() {
                     ]}>
                     <Input name='password' />
                 </Form.Item>
-                
+                <Button onClick={handleOnSubmit} type='primary' >Sign Up</Button>
             </Form>
   </Card>
            
