@@ -4,20 +4,28 @@ import {
     Form,
     Input,
 } from 'antd';
+import { Card } from 'antd';
 
 
 export default function Registration() {
     const [componentDisabled, setComponentDisabled] = useState(true);
     return (
         <>
-            <Form
+          <Card
+    title="Card title"
+    bordered={false}
+    style={{
+      width: 450,
+    }}
+  >
+    <Form
                 labelCol={{
-                    span: 4,
+                    span: 24,
                 }}
                 wrapperCol={{
-                    span: 14,
+                    span: 24,
                 }}
-                layout="horizontal"
+                layout="vertical"
                 style={{
                     maxWidth: 600,
                 }}
@@ -65,6 +73,8 @@ export default function Registration() {
                 </Form.Item>
                 
             </Form>
+  </Card>
+           
         </>
     );
 
