@@ -1,18 +1,33 @@
-
+import { TinyColor } from '@ctrl/tinycolor';
 import {
     Alert,
     Button,
+    ConfigProvider,
+    Flex,
     Form,
     Input,
 } from 'antd';
 import { Card } from 'antd';
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { userLoginInfo } from '../Redux/Slices/userSlices';
+const colors1 = ['#6253E1', '#04BEFE'];
+const colors2 = ['#fc6076', '#ff9a44', '#ef9d43', '#e75516'];
+const colors3 = ['#40e495', '#30dd8a', '#2bb673'];
+const getHoverColors = (colors) =>
+  colors.map((color) => new TinyColor(color).lighten(5).toString());
+const getActiveColors = (colors) =>
+  colors.map((color) => new TinyColor(color).darken(5).toString());
 export default function Login() {
+    const userData = useSelector (state => state.userLoginInfo.userInfo)
+    console.log(userData);
   const [Error , setError] = useState(false)
   const [Success , setSucces] = useState(false);
   const navigate = useNavigate();
+  const dispatch =useDispatch();
+ 
   const [fromData , setfromData] = useState({
     email : "",
     password : ""
@@ -34,11 +49,22 @@ export default function Login() {
    }else{
     setSucces(response.data.success);
     setError(false)
+    dispatch(userLoginInfo(response.data))
     setTimeout (()=>{
-navigate("/")
+   navigate("/")
     }, 2000)
    }
     }
+    const handleOnBack = () =>{
+        navigate("/registration")
+    }
+    useEffect (()=>{
+      
+        if (userData != null){
+            navigate('/')
+        }
+      },[])
+   
     return (
       <Card
       title="Login"
@@ -80,7 +106,21 @@ navigate("/")
                   },
               ]}> <Input onChange={handleInputChange} name='password' />
           </Form.Item>
-          <Button onClick={handleOnSubmit} type='primary'>Sign Up</Button>
+         <Flex style={{justifyContent: 'space-between'}}>         
+        <ConfigProvider theme={{
+        components: {
+          Button: {
+            colorPrimary: `linear-gradient(90deg,  ${colors2.join(', ')})`,
+            colorPrimaryHover: `linear-gradient(90deg, ${getHoverColors(colors2).join(', ')})`,
+            colorPrimaryActive: `linear-gradient(90deg, ${getActiveColors(colors2).join(', ')})`,
+            lineWidth: 0,
+          },
+        },
+      }}
+    > <Button   onClick={handleOnBack} type="primary" > SignUp Page</Button>
+    </ConfigProvider>
+      <Button onClick={handleOnSubmit} type='primary'>Login </Button>
+         </Flex>
       </Form>
   </Card>
     )

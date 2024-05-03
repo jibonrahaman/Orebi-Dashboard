@@ -1,5 +1,7 @@
 import { UsergroupAddOutlined,ProductOutlined,MenuUnfoldOutlined,PicCenterOutlined} from '@ant-design/icons';
 import { Menu, Row, Col,   } from 'antd';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
 function getItem(label, key, icon, children, type) {
   return {
@@ -43,6 +45,12 @@ const items = [
  
 ];
 export default function Home() {
+  const userData = useSelector(state => state.userLoginInfo.userInfo)
+  useEffect(()=>{      
+    if (!userData){
+        navigate('/login')
+    }
+  },[])
   const navigate = useNavigate();
     const onClick = (e) => { 
         navigate(e.key)    
