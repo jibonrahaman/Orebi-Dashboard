@@ -3,47 +3,7 @@ import { Menu, Row, Col,   } from 'antd';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
-function getItem(label, key, icon, children, type) {
-  return {
-    key,
-    icon,
-    children,
-    label,
-    type,
-  };
-}
-const items = [
-  getItem('Users', 'sub1', <UsergroupAddOutlined />, [
-    getItem('Merchant', '/login'),
-    getItem('Users', '2'),
-     ]),
-  {
-    type: 'divider',
-  },
-  getItem('Product', 'sub2', <ProductOutlined />, [
-    getItem('Add Product', '/addproduct'),
-    getItem('All Product', '/allproduct'),
-    getItem('All Variant', '/allvariant'),
-     ]),
-  {
-    type: 'divider',
-  },
-    getItem('Category', 'sub3', <MenuUnfoldOutlined />, [
-    getItem('Add Category', '5'),
-    getItem('All Category', '6'),
-     ]),
-  {
-    type: 'divider',
-  },
-    getItem('SubCategory', 'sub4', <PicCenterOutlined />, [
-    getItem('Add SubCategory', '7'),
-    getItem('All SubCategory', '8'),
-     ]),
-  {
-    type: 'divider',
-  },
- 
-];
+
 export default function Home() {
   const userData = useSelector(state => state.userLoginInfo.userInfo)
   useEffect(()=>{      
@@ -56,6 +16,51 @@ export default function Home() {
         navigate(e.key)    
         console.log('click ', e);
       };
+         
+         // outlet 
+      function getItem(label, key, icon, children, type) {
+        return {
+          key,
+          icon,
+          children,
+          label,
+          type,
+        };
+      }
+      const items = [
+        userData?.role == "admin" && 
+        getItem('Users', 'sub1', <UsergroupAddOutlined />, [
+          getItem('Merchant', '/login'),
+          getItem('Users', '2'),
+           ]),
+        {
+          type: 'divider',
+        },
+        getItem('Product', 'sub2', <ProductOutlined />, [
+          getItem('Add Product', '/addproduct'),
+          getItem('All Product', '/allproduct'),
+          getItem('All Variant', '/allvariant'),
+           ]),
+        {
+          type: 'divider',
+        },
+          getItem('Category', 'sub3', <MenuUnfoldOutlined />, [
+          getItem('Add Category', '5'),
+          getItem('All Category', '6'),
+           ]),
+        {
+          type: 'divider',
+        },
+          getItem('SubCategory', 'sub4', <PicCenterOutlined />, [
+          getItem('Add SubCategory', '7'),
+          getItem('All SubCategory', '8'),
+           ]),
+        {
+          type: 'divider',
+        },
+       
+      ];
+
   return (
  <>
     <Row>

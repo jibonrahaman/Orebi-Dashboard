@@ -47,12 +47,17 @@ export default function Login() {
     setError(response.data.error);
     setSucces(false)
    }else{
+   if(response.data.role ==  "member"){
+    setError("This admin panel is not for members");
+   }else{
     setSucces(response.data.success);
     setError(false)
     dispatch(userLoginInfo(response.data))
+    localStorage.setItem("userLoginInfo", JSON.stringify(userLoginInfo(response.data)))
     setTimeout (()=>{
    navigate("/")
     }, 2000)
+   }
    }
     }
     const handleOnBack = () =>{
