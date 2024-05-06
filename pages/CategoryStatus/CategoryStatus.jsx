@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Table } from 'antd';
 import axios from 'axios';
+import { render } from 'react-dom';
 export default function CategoryStatus() {
  const [fetchCategory , setfetchCategory] = useState([])
   useEffect(()=>{
@@ -13,7 +14,7 @@ export default function CategoryStatus() {
     }
    }
    fetchGetCategoyr();
-  }, [])
+  }, [fetchCategory])
 
     const columns = [
         {
@@ -30,6 +31,7 @@ export default function CategoryStatus() {
           title: 'isActive',
           dataIndex: 'isActive',
           key: 'isActive',
+          render : (_,record)=> <p>{record.isActive ? "Active" : "inActive"}</p>
         },
          {
           title: 'Status',
