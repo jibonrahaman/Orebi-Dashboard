@@ -57,13 +57,20 @@ export default function Home() {
            ]),
         {
           type: 'divider',
+        }, 
+         getItem('Category Status', 'sub5', <PicCenterOutlined />, [
+          getItem('Category Status', '/categorystatus'),
+          getItem(' SubCategory Status', '8'),
+           ]),
+        {
+          type: 'divider',
         },
        
       ];
 
   return (
  <>
-    <Row>
+    <Row style={{marginTop:30}}>
     <Col span={6} >
     <Menu
     onClick={onClick}
@@ -76,7 +83,7 @@ export default function Home() {
   />
   </Col>
 
-    <Col span={16}>
+    <Col style={{marginTop:-40}} span={16}>
      <Outlet/>
     </Col>
   </Row>

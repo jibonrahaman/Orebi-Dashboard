@@ -88,7 +88,7 @@ export default function AddProduct() {
             <h2>Product Name :</h2>
             <Input onChange={(e)=>setproductName(e.target.value)} placeholder="Product Name" />
 
-            {/* Product Description */}
+            {/* Product Description */} 
             <div>
                 <h2>Product  Description  :</h2>
                 <Editor
