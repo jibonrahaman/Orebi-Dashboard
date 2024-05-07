@@ -45,7 +45,7 @@ export default function Home() {
           type: 'divider',
         },
           getItem('Category', 'sub3', <MenuUnfoldOutlined />, [
-          getItem('Add Category', '5'),
+          getItem('Add Category', '/addcategory'),
           getItem('All Category', '6'),
            ]),
         {

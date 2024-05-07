@@ -13,6 +13,7 @@ import AllProduct from "../pages/AllProduct";
 import AllVariant from "../pages/AllVariant";
 import Registration from "../pages/Registration";
 import CategoryStatus from "../pages/CategoryStatus/CategoryStatus";
+import AddCategory from "../pages/AddCategory";
 
 
 function App() {
@@ -32,6 +33,9 @@ function App() {
           <Route
           path="/categorystatus"
           element = {<CategoryStatus/>}/>
+          <Route
+          path="/addcategory"
+          element = {<AddCategory/>}/>
       </Route>
         
          
