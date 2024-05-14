@@ -46,14 +46,14 @@ export default function Home() {
         },
           getItem('Category', 'sub3', <MenuUnfoldOutlined />, [
           getItem('Add Category', '/addcategory'),
-          getItem('All Category', '6'),
+          getItem('All Category', '/allcategory'),
            ]),
         {
           type: 'divider',
         },
           getItem('SubCategory', 'sub4', <PicCenterOutlined />, [
-          getItem('Add SubCategory', '7'),
-          getItem('All SubCategory', '8'),
+          getItem('Add SubCategory', '/addsubcategory'),
+          getItem('All SubCategory', '/allsubcategory'),
            ]),
         {
           type: 'divider',

@@ -7,20 +7,6 @@ import { Button, Select, Tag } from 'antd';
 import axios from "axios";
 import draftToHtml from 'draftjs-to-html';
 
-const options = [
-    {
-        value: 'gold',
-    },
-    {
-        value: 'lime',
-    },
-    {
-        value: 'green',
-    },
-    {
-        value: 'cyan',
-    },
-];
 const tagRender = (props) => {
     const { label, value, closable, onClose } = props;
     const onPreventMouseDown = (event) => {
