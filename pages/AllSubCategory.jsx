@@ -3,18 +3,18 @@ import { Table } from 'antd';
 import axios from 'axios';
 import { render } from 'react-dom';
 export default function AllSubCategory() {
- const [fetchCategory , setfetchCategory] = useState([])
+ const [fetchSubCategory , setfetchSubCategory] = useState([])
   useEffect(()=>{
    const fetchGetCategoyr =async ()=>{
     try {
       const response = await axios.get("http://localhost:7000/api/v1/allget/getAllCategory")
-      setfetchCategory(response.data.CATEGORYS);
+      setfetchSubCategory(response.data.SUBCATEGORYS);
     } catch (error) {
        console.log(error,"CategoryStatus Page-");
     }
    }
    fetchGetCategoyr();
-  }, [fetchCategory])
+  }, [fetchSubCategory])
 
     const columns = [
         {
@@ -46,7 +46,7 @@ export default function AllSubCategory() {
    <h5 >All Category Status</h5>
    <Table
     columns={columns}
-    dataSource={fetchCategory}
+    dataSource={fetchSubCategory}
     bordered
   />
    </>
