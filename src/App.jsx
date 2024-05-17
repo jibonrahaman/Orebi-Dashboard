@@ -17,6 +17,7 @@ import AddCategory from "../pages/AddCategory";
 import AllCategory from "../pages/AllCategory";
 import AddSubCategory from "../pages/AddSubCategory";
 import AllSubCategory from "../pages/AllSubCategory";
+import SubCategoryStatus from "../pages/SubCategoryStatus/SubCategoryStatus";
 
 
 function App() {
@@ -36,6 +37,9 @@ function App() {
           <Route
           path="/categorystatus"
           element = {<CategoryStatus/>}/>
+           <Route
+          path="/subcategorystatus"
+          element = {<SubCategoryStatus/>}/>
           <Route
           path="/addcategory"
           element = {<AddCategory/>}/>

@@ -60,7 +60,7 @@ export default function Home() {
         }, 
          getItem('Category Status', 'sub5', <PicCenterOutlined />, [
           getItem('Category Status', '/categorystatus'),
-          getItem(' SubCategory Status', '8'),
+          getItem(' SubCategory Status', '/subcategorystatus'),
            ]),
         {
           type: 'divider',
