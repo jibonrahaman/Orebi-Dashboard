@@ -29,6 +29,8 @@ export default function AddVariant() {
     const [productName, setProductName] = useState("");
     const [addProduct, setaddProduct] = useState([]);
     const [alertSuccess,setAlertSuccess] = useState(false)
+    const [Error,setError] = useState(false)
+
     useEffect(() => {
         const fetchProduct = async () => {
             try {
@@ -91,25 +93,25 @@ export default function AddVariant() {
                 setAlertSuccess(true)
              
         } catch (error) {
-       console.log(error.response.data);
+            if ( error.response.data.error) {
+                setError(error.response.data.error);
+            } else {
+                setError(error.response.data);
+            }
+            setTimeout(() => {
+                setError("");
+            }, 2000);        
         }
      // Hide the alert after 1 second
      setTimeout(() => {
         setAlertSuccess(false);
     }, 1500);
     }
-
     return (
       <>
-       {
-                  alertSuccess &&
-                  <Alert
-                 style={{marginTop: 20}}
-                  message="Upload Successfuly"
-                  type="success"
-                  showIcon
-              />
-             }
+{ alertSuccess &&  <Alert style={{marginTop: 30}} message="Upload Successfuly" type="success" showIcon /> }
+{Error && <Alert style={{marginTop: 30,width: 800}} message={Error} type="error" showIcon/> }
+
         <div style={{ width: 800 }}>                      
             <h3>Product Name : </h3>
             <Select
