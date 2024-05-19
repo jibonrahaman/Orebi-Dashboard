@@ -53,10 +53,13 @@ export default function AddVariant() {
         price: "",
         quantity : ""
     });
-   console.log(variantData);
-   const handleInputChange = ()=>{
-    
+  
+   const handleInputChange = (e)=>{
+    setVariantData({...variantData,[e.target.name]:e.target.value})
    }
+  const handleCreateVariant = ()=>{
+    console.log("ff");
+  }
     return (
         <div style={{width:800}}>
             <h3>Product Name : </h3>
@@ -84,7 +87,7 @@ export default function AddVariant() {
             <Input onChange={handleInputChange} name='quantity' placeholder='quantity' />
             <h3>Variant Image :</h3>
             <Input onChange={handleInputChange}  type='file' placeholder='give me img ' />
-            <Button type='primary' style={{marginTop: 20}}>Create Variant</Button>
+            <Button onClick={handleCreateVariant} type='primary' style={{marginTop: 20}}>Create Variant</Button>
         </div>
     )
 }
