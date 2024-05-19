@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Select, Table, Modal } from 'antd';
 import axios from 'axios';
-import { render } from 'react-dom';
+
 
 export default function CategoryStatus() {
   const [categoryName, setcategoryName] = useState('')

@@ -6,6 +6,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 
 export default function Home() {
   const userData = useSelector(state => state.userLoginInfo.userInfo)
+ 
   useEffect(()=>{      
     if (!userData){
         navigate('/login')
@@ -28,9 +29,9 @@ export default function Home() {
         };
       }
       const items = [
-        userData?.role == "admin" && 
+        userData?.payload.role == "admin" && 
         getItem('Users', 'sub1', <UsergroupAddOutlined />, [
-          getItem('Merchant', '/login'),
+          getItem('Merchant', '1'),
           getItem('Users', '2'),
            ]),
         {
@@ -39,6 +40,7 @@ export default function Home() {
         getItem('Product', 'sub2', <ProductOutlined />, [
           getItem('Add Product', '/addproduct'),
           getItem('All Product', '/allproduct'),
+          getItem('Add Variant', '/addvariant'),
           getItem('All Variant', '/allvariant'),
            ]),
         {

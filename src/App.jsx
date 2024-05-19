@@ -18,6 +18,7 @@ import AllCategory from "../pages/AllCategory";
 import AddSubCategory from "../pages/AddSubCategory";
 import AllSubCategory from "../pages/AllSubCategory";
 import SubCategoryStatus from "../pages/SubCategoryStatus/SubCategoryStatus";
+import AddVariant from "../pages/AddVariant";
 
 
 function App() {
@@ -31,6 +32,8 @@ function App() {
           element = {<AddProduct/>} />
             <Route path="/allproduct"
           element = {<AllProduct/>} /> 
+           <Route path="/addvariant"
+          element = {<AddVariant/>} /> 
           <Route
           path="/allvariant"
           element = {<AllVariant/>}/>
