@@ -44,6 +44,19 @@ export default function AddVariant() {
       }
       fetchProduct()
     }, [productData])
+
+    const [variantData,setVariantData] = useState({
+        color : '',
+        ram : "" ,
+        storage : "",
+        size : "",
+        price: "",
+        quantity : ""
+    });
+   console.log(variantData);
+   const handleInputChange = ()=>{
+    
+   }
     return (
         <div style={{width:800}}>
             <h3>Product Name : </h3>
@@ -58,19 +71,19 @@ export default function AddVariant() {
             options={addProduct}
             />
             <h3>Variant Color :</h3>
-            <Input placeholder='color' />
+            <Input onChange={handleInputChange} name='color' placeholder='color' />
             <h3>Variant Ram :</h3>
-            <Input placeholder='ram' />
+            <Input onChange={handleInputChange} name='ram' placeholder='ram' />
               <h3>Variant Storage/Rom :</h3>
-            <Input placeholder='rom/storage' /> 
+            <Input onChange={handleInputChange} name='storage' placeholder='rom/storage' /> 
              <h3>Variant Size :</h3>
-            <Input placeholder='size' />
+            <Input onChange={handleInputChange} name='size' placeholder='size' />
             <h3>Variant Price :</h3>
-            <Input placeholder='price' />
+            <Input onChange={handleInputChange} name='price' placeholder='price' />
             <h3>Variant Quantity :</h3>
-            <Input placeholder='quantity' />
+            <Input onChange={handleInputChange} name='quantity' placeholder='quantity' />
             <h3>Variant Image :</h3>
-            <Input type='file' placeholder='give me img ' />
+            <Input onChange={handleInputChange}  type='file' placeholder='give me img ' />
             <Button type='primary' style={{marginTop: 20}}>Create Variant</Button>
         </div>
     )
