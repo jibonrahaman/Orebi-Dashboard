@@ -24,7 +24,9 @@ export default function AddVariant() {
         );
     };
 
+    const [img, setImg] = useState("");
     const [productData, setProductData] = useState([]);
+    const [productName, setProductName] = useState("");
     const [addProduct , setaddProduct] = useState([]);
     useEffect(() => {
       const fetchProduct = async () => {
@@ -57,15 +59,31 @@ export default function AddVariant() {
    const handleInputChange = (e)=>{
     setVariantData({...variantData,[e.target.name]:e.target.value})
    }
-  const handleCreateVariant = ()=>{
-    console.log("ff");
+   const handleImg =(e)=>{
+    setImg(e.target.files[0]);
+   }
+   console.log(variantData);
+  const handleCreateVariant = async ()=>{
+   await axios.post("http://localhost:7000/api/v1/become/createVariant",{
+   ram: variantData.ram,
+    storage : variantData.storage,
+     color : variantData.color ,
+      price : variantData.price, 
+     size : variantData.size, 
+     quantity : variantData.quantity,
+     img: img,
+      productId : productName
+   },
+   {
+    headers: {'Content-Type': 'multipart/form-data'}        
+   })
   }
     return (
         <div style={{width:800}}>
             <h3>Product Name : </h3>
             <Select
             placeholder="select product"
-                //  onChange={(e)=>setStoreName(e)}
+                 onChange={(e)=>setProductName(e)}
                 mode="single"
                 tagRender={tagRender}
                 style={{
@@ -86,7 +104,7 @@ export default function AddVariant() {
             <h3>Variant Quantity :</h3>
             <Input onChange={handleInputChange} name='quantity' placeholder='quantity' />
             <h3>Variant Image :</h3>
-            <Input onChange={handleInputChange}  type='file' placeholder='give me img ' />
+            <Input onChange={handleImg}  type='file' placeholder='give me img ' />
             <Button onClick={handleCreateVariant} type='primary' style={{marginTop: 20}}>Create Variant</Button>
         </div>
     )
