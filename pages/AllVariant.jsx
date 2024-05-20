@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 export default function AllVariant() {
   const [variantData, setVariantData] = useState([]);
 
+  // get all variant data fetching 
   useEffect(()=>{
   const fetchVariant = async ()=>{
     const response = await axios.get("http://localhost:7000/api/v1/allget/getvariant");
@@ -13,22 +14,20 @@ export default function AllVariant() {
   }
   fetchVariant()
   }, [variantData])
-
-
+  
+  // show all fetching data serial by serial
   const columns = [
     {
       title: 'Serial',
       dataIndex: 'number',
       key: 'number',
       render:(_id,record,index) =>{return (index+1)}
-     },
-     
-  
+     },      
     {
       title: 'Product Name',
       dataIndex: 'name',
       key: 'name',
-      render: (_id,record,text) => <p style={{color:'blue', fontWeight: 'bold'}}>{record.productId.name}</p>,
+      render: (_id,record,text) => <p style={{color:'blue', fontWeight: 'bold'}}>{record?.productId?.name}</p>,
     },
      {
       title: 'Color',
@@ -58,7 +57,7 @@ export default function AllVariant() {
       dataIndex: 'img',
       key: 'img',
       render : (_id,record) => (
-        <img style={{ width: 100 }} src={record.img}alt="img" />
+        <img style={{ width: 100 }} src={record?.img}alt="img" />
       )
     },
    
@@ -79,13 +78,22 @@ export default function AllVariant() {
       key: 'action',
       render: (_, record) => (
         <Space size="middle">
-           <Button type="primary" >Edit</Button>
-          <Button type="primary" danger>Delete </Button>
+          <Button onClick={()=>handleDelete(record?._id)} type="primary" danger>Delete </Button>
         </Space>
       ),
     },
   ];
- 
+
+  // delete variant id 
+ const handleDelete = async (id) =>{
+  try {
+    await axios.post("http://localhost:7000/api/v1/alldelete/variantDelete/",{
+      id: id
+    })
+  } catch (error) {
+   console.log(error); 
+  }
+ }
   return (
     <>
     <h1 style={{margin: 10}}>All Variants</h1>

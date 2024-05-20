@@ -47,8 +47,7 @@ const columns = [
     key: 'action',
     render: (_, record) => (
       <Space size="middle">
-        <Button type="primary" >Edit</Button>
-        <Button onClick={() => handleDelete(record._id)} type="primary" danger>Delete </Button>
+ <Button onClick={() => handleDelete(record._id)} type="primary" danger>Delete</Button>
       </Space>
     ),
   },

@@ -68,7 +68,7 @@ export default function AddVariant() {
 
     const handleCreateVariant = async () => {
         try {
-            await axios.post("http://localhost:7000/api/v1/become/createVariant", {
+           const response= await axios.post("http://localhost:7000/api/v1/become/createVariant", {
                 ram: variantData.ram,
                 storage: variantData.storage,
                 color: variantData.color,
@@ -91,6 +91,7 @@ export default function AddVariant() {
                 });
                 setProductName("");
                 setAlertSuccess(true)
+                setAlertSuccess(response.data.message);
              
         } catch (error) {
             if ( error.response.data.error) {
@@ -109,7 +110,7 @@ export default function AddVariant() {
     }
     return (
       <>
-{ alertSuccess &&  <Alert style={{marginTop: 30}} message="Upload Successfuly" type="success" showIcon /> }
+{ alertSuccess &&  <Alert style={{marginTop: 30}} message={alertSuccess} type="success" showIcon /> }
 {Error && <Alert style={{marginTop: 30,width: 800}} message={Error} type="error" showIcon/> }
 
         <div style={{ width: 800 }}>                      
